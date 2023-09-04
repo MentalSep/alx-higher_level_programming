@@ -14,8 +14,6 @@ int check_cycle(listint_t *list)
 
 	for (end = list->next; end != NULL; end = end->next)
 	{
-		if (end == end->next)
-			return (1);
 		for (tmp = list; tmp != end; tmp = tmp->next)
 			if (tmp == end->next)
 				return (1);
