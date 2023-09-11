@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <Python.h>
 
-/**
- * print_python_list_info - prints some basic info about Python lists
- * @p: pointer to PyObject
- */
-void print_python_list_info(PyObject *p)
+t_python_list_info(PyObject *p)
 {
 	Py_ssize_t size, i;
 	PyObject *item;
