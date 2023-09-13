@@ -49,7 +49,7 @@ void print_python_list(PyObject *p)
 	{
 		type = ((PyListObject *)p)->ob_item[i]->ob_type->tp_name;
 		printf("Element %d: %s\n", i, type);
-		if (PyBytes_Check(p))
+		if (strcmp(type, "bytes") == 0)
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
 	}
 }
