@@ -11,6 +11,7 @@ class Square:
             raise ValueError("size must be >= 0")
         """Initializes the size variable as a private instance"""
         self.__size = size
+
     def area(self):
         """This function returns the area of the square"""
         return (self.__size * self.__size)
