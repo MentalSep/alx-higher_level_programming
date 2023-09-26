@@ -41,7 +41,7 @@ class Square:
         """This function sets the position of the square"""
         if type(value) is not tuple:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if len(value) < 2:
+        if len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         if type(value[0]) is not int or type(value[1]) is not int:
             raise TypeError("position must be a tuple of 2 positive integers")
