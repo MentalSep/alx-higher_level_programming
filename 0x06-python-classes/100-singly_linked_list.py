@@ -7,8 +7,8 @@ class Node:
     """Node class with private attributes - data, next_node"""
     def __init__(self, data, next_node=None):
         """initialize the private attributes"""
-        self.__data = data
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
