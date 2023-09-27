@@ -4,6 +4,7 @@ import math
 
 
 class MagicClass:
+    """MagicClass class with a private instance attribute - radius"""
     def __inti__(self, radius=0):
         """Initializes the radius variable as a private instance"""
         self.__radius = 0
