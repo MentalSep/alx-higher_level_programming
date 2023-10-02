@@ -34,4 +34,4 @@ if __name__ == "__main__":
                 board[col] = row
                 solve(board, col + 1)
 
-solve([0 for col in range(n)], 0)
+    solve([0 for col in range(n)], 0)
