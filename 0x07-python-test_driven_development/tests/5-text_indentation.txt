@@ -1,0 +1,65 @@
+
+# Importing the function text_indentation from the file 5-text_indentation.py
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+>>> text_indentation("Test")
+Test
+
+>>> text_indentation("Test.")
+Test.
+<BLANKLINE>
+
+>>> text_indentation("Test?")
+Test?
+<BLANKLINE>
+
+>>> text_indentation("Test:")
+Test:
+<BLANKLINE>
+
+>>> text_indentation("   Test.   ")
+Test.
+<BLANKLINE>
+
+>>> text_indentation("Test\nTest")
+Test
+Test
+
+>>> text_indentation(" Test? ")
+Test?
+<BLANKLINE>
+
+>>> text_indentation("  Test:  ")
+Test:
+<BLANKLINE>
+
+>>> text_indentation(" Alx: Test?    Hello. ")
+Alx:
+<BLANKLINE>
+Test?
+<BLANKLINE>
+Hello.
+<BLANKLINE>
+
+>>> text_indentation("Hello.     World?")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation(True)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation("Alx", "School")
+Traceback (most recent call last):
+TypeError: text_indentation() takes 1 positional argument but 2 were given
+
