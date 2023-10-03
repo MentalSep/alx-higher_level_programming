@@ -1,0 +1,128 @@
+
+# Importing lazy_matrix_mul function from 100-lazy_matrix_mul.py
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, 6], [7, 8]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+[[19 22]
+ [43 50]]
+
+>>> m_a = [[1.0, 2.0], [3.0, 4.0]]
+>>> m_b = [[5.0, 6.0], [7.0, 8.0]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+[[19. 22.]
+ [43. 50.]]
+
+>>> m_a = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+>>> m_b = [[1.0, 2.0, 3.0, 4], [4.0, 5.0, -6.0, 7], [7.0, 8.0, -9.0, 10]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+[[ 30.  36. -36.  48.]
+ [-18. -15.  36.  -9.]
+ [-24. -18.  54.  -6.]]
+
+
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> m_b = [[1, 2, 3], [4, 5, -6]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 3)
+
+>>> m_a = [[1]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 1)
+
+>>> m_a = [[]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 0)
+
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, 8, -9, 10]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (3,) + inhomogeneous part.
+
+>>> m_a = ((1, 2, 3))
+>>> m_b = [[1, 2, 3]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 3)
+
+>>> m_a = None
+>>> m_b = [[1, 2, 3]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+>>> m_b = None
+>>> m_a = [[1, 2, 3]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+
+>>> m_a = 1
+>>> m_b = [[1, 2, 3]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+>>> m_b = 1
+>>> m_a = [[1, 2, 3]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, "test", -9]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U21'), dtype('int64')) -> None
+
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, "test", -9]]
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U21')) -> None
+
+>>> m_a = [[1, 2, 3], [4, None, -6], [7, 8, -9]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+
+>>> m_b = [[1, 2, 3], [4, None, -6], [7, 8, -9]]
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+
+>>> m_a = [[{1}, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: unsupported operand type(s) for *: 'set' and 'int'
+
+>>> m_b = [[{1}, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> m_a = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: unsupported operand type(s) for *: 'int' and 'set'
+
+>>> m_a = [[[1], 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> m_b = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 2 dimensions. The detected shape was (3, 3) + inhomogeneous part.
+
+>>> print(lazy_matrix_mul())
+Traceback (most recent call last):
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+>>> print(lazy_matrix_mul(m_a))
+Traceback (most recent call last):
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
