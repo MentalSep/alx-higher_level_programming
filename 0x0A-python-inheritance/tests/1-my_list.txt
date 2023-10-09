@@ -1,0 +1,29 @@
+
+# Importing Mylist class from mylist.py
+
+>>> Mylist = __import__('1-my_list').MyList
+
+>>> my_list = Mylist()
+
+>>> my_list.print_sorted()
+[]
+
+>>> my_list = Mylist([1, 2, 3, 4])
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
+
+>>> my_list.append(5)
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+>>> my_list.append(4)
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 4, 5]
+
+>>> my_list.append(-1)
+>>> my_list.print_sorted()
+[-1, 1, 2, 3, 4, 4, 5]
+
+>>> my_list.append(0)
+>>> my_list.print_sorted()
+[-1, 0, 1, 2, 3, 4, 4, 5]
