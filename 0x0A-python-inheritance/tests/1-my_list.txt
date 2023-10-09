@@ -1,40 +1,27 @@
 
-# Importing Mylist class from mylist.py
+# Importing the class MyList from the file 1-my_list.py
+>>> MyList = __import__('1-my_list').MyList
 
->>> Mylist = __import__('1-my_list').MyList
-
->>> my_list = Mylist()
+>>> my_list = MyList()
 
 >>> my_list.print_sorted()
 []
 
->>> my_list = Mylist([1, 2, 3, 4])
->>> my_list.print_sorted()
-[1, 2, 3, 4]
-
->>> my_list.append(5)
+>>> my_list = MyList([1, 4, 2, 3, 5])
 >>> my_list.print_sorted()
 [1, 2, 3, 4, 5]
 
->>> my_list.append(4)
+>>> my_list.append(-100)
 >>> my_list.print_sorted()
-[1, 2, 3, 4, 4, 5]
+[-100, 1, 2, 3, 4, 5]
 
->>> my_list.append(-1)
->>> my_list.print_sorted()
-[-1, 1, 2, 3, 4, 4, 5]
+>>> copy = my_list.print_sorted()
+[-100, 1, 2, 3, 4, 5]
+
+>>> copy is my_list.print_sorted()
+[-100, 1, 2, 3, 4, 5]
+True
 
 >>> my_list.append(0)
 >>> my_list.print_sorted()
-[-1, 0, 1, 2, 3, 4, 4, 5]
-
->>> my_list.append(1)
->>> my_list.print_sorted()
-[-1, 0, 1, 1, 2, 3, 4, 4, 5]
-
->>> c = my_list.print_sorted()
-[-1, 0, 1, 1, 2, 3, 4, 4, 5]
-
->>> c is my_list.print_sorted()
-[-1, 0, 1, 1, 2, 3, 4, 4, 5]
-True
+[-100, 0, 1, 2, 3, 4, 5]
