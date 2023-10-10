@@ -21,6 +21,8 @@ if __name__ == "__main__":
         for line in sys.stdin:
             lineCount += 1
             data = line.split()
+            if len(data) < 2:
+                continue
             status = data[-2]
             file_size = data[-1]
             try:
