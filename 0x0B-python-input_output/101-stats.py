@@ -32,6 +32,6 @@ if __name__ == "__main__":
             if lineCount % 10 == 0:
                 print_stats(total_size, status_codes)
         print_stats(total_size, status_codes)
-    except (KeyboardInterrupt, EOFError):
+    except KeyboardInterrupt:
         print_stats(total_size, status_codes)
         raise
