@@ -21,7 +21,7 @@ if __name__ == "__main__":
         for line in sys.stdin:
             lineCount += 1
             data = line.split()
-            if len(data) < 2:
+            if len(data) != 9:
                 continue
             try:
                 total_size += int(data[-1])
