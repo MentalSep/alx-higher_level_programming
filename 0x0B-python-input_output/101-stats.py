@@ -24,8 +24,10 @@ if __name__ == "__main__":
             data = line.split()
             status = data[-2]
             file_size = data[-1]
-            if status in status_codes:
-                status_codes[status] += 1
+            try:
+                    status_codes[status] += 1
+            except [KeyError, IndexError]:
+                pass
             try:
                 total_size += int(file_size)
             except [ValueError, TypeError]:
