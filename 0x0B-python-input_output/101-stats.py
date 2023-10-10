@@ -21,6 +21,8 @@ if __name__ == "__main__":
         for line in sys.stdin:
             lineCount += 1
             data = line.split()
+            if len(data) < 2:
+                continue
             try:
                 total_size += int(data[-1])
             except [ValueError, TypeError, IndexError]:
