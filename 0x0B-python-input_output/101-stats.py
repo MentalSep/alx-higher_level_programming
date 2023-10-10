@@ -22,8 +22,9 @@ def main():
             tokens = line.split()
             file_size += int(tokens[-1])
             status_codes[tokens[-2]] += 1
-            if i % 10 == 0:
+            if i == 10:
                 print_stats(file_size, status_codes)
+                i = 0
     except KeyboardInterrupt:
         print_stats(file_size, status_codes)
         raise
