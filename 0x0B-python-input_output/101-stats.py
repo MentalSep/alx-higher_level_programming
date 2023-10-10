@@ -21,11 +21,9 @@ if __name__ == "__main__":
         for line in sys.stdin:
             lineCount += 1
             data = line.split()
-            if len(data) != 9:
-                continue
             try:
                 total_size += int(data[-1])
-            except [ValueError, TypeError, IndexError]:
+            except [ValueError, IndexError]:
                 pass
             try:
                 status_codes[data[-2]] += 1
