@@ -26,8 +26,9 @@ if __name__ == "__main__":
             if status in status_codes:
                 status_codes[status] += 1
             total_size += int(file_size)
-            if lineCount % 10 == 0:
+            if lineCount == 10:
                 print_stats(total_size, status_codes)
+                lineCount = 0
         print_stats(total_size, status_codes)
     except KeyboardInterrupt:
         print_stats(total_size, status_codes)
