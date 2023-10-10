@@ -26,7 +26,10 @@ if __name__ == "__main__":
             file_size = data[-1]
             if status in status_codes:
                 status_codes[status] += 1
-            total_size += int(file_size)
+            try:
+                total_size += int(file_size)
+            except [ValueError, TypeError]:
+                pass
             if lineCount == 10:
                 print_stats(total_size, status_codes)
                 lineCount = 0
