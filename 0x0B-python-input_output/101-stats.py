@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 pass
             try:
                 total_size += int(data[-1])
-            except [ValueError, TypeError]:
+            except [ValueError, TypeError, IndexError]:
                 pass
             if lineCount % 10 == 0:
                 print_stats(total_size, status_codes)
