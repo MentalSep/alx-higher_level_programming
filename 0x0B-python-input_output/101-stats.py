@@ -21,16 +21,12 @@ if __name__ == "__main__":
         for line in sys.stdin:
             lineCount += 1
             data = line.split()
-            if len(data) < 2:
-                continue
-            status = data[-2]
-            file_size = data[-1]
             try:
-                status_codes[status] += 1
+                status_codes[data[-2]] += 1
             except [KeyError, IndexError]:
                 pass
             try:
-                total_size += int(file_size)
+                total_size += int(data[-1])
             except [ValueError, TypeError]:
                 pass
             if lineCount % 10 == 0:
