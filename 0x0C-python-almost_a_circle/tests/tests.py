@@ -6,6 +6,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
     """ unittest for Base class """
     def test_docs(self):
@@ -101,8 +102,10 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file([r1, r2])
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(len(list_rectangles_output), 2)
-        self.assertEqual(list_rectangles_output[0].__str__(), "[Rectangle] (1) 2/8 - 10/7")
-        self.assertEqual(list_rectangles_output[1].__str__(), "[Rectangle] (2) 0/0 - 2/4")
+        self.assertEqual(list_rectangles_output[0].__str__(),
+                         "[Rectangle] (1) 2/8 - 10/7")
+        self.assertEqual(list_rectangles_output[1].__str__(),
+                         "[Rectangle] (2) 0/0 - 2/4")
         Rectangle.save_to_file(None)
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(len(list_rectangles_output), 0)
@@ -115,9 +118,12 @@ class TestBase(unittest.TestCase):
         """ tests for save_to_file_csv method """
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 0, 0, 2)
+        errorLine = "[{\"id\": 1, \"width\": 10, \"height\": 7, \"x\": 2, \
+\"y\": 8}, {\"id\": 2, \"width\": 2, \"height\": 4, \"x\": 0, \
+\"y\": 0}]"
         Rectangle.save_to_file_csv([r1, r2])
         with open("Rectangle.csv", "r") as file:
-            self.assertEqual(file.read(), "[{\"id\": 1, \"width\": 10, \"height\": 7, \"x\": 2, \"y\": 8}, {\"id\": 2, \"width\": 2, \"height\": 4, \"x\": 0, \"y\": 0}]")
+            self.assertEqual(file.read(), errorLine)
         Rectangle.save_to_file_csv([])
         with open("Rectangle.csv", "r") as file:
             self.assertEqual(file.read(), "[]")
@@ -138,8 +144,10 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file_csv([r1, r2])
         list_rectangles_output = Rectangle.load_from_file_csv()
         self.assertEqual(len(list_rectangles_output), 2)
-        self.assertEqual(list_rectangles_output[0].__str__(), "[Rectangle] (1) 2/8 - 10/7")
-        self.assertEqual(list_rectangles_output[1].__str__(), "[Rectangle] (2) 0/0 - 2/4")
+        self.assertEqual(list_rectangles_output[0].__str__(),
+                         "[Rectangle] (1) 2/8 - 10/7")
+        self.assertEqual(list_rectangles_output[1].__str__(),
+                         "[Rectangle] (2) 0/0 - 2/4")
         Rectangle.save_to_file_csv(None)
         list_rectangles_output = Rectangle.load_from_file_csv()
         self.assertEqual(len(list_rectangles_output), 0)
@@ -147,6 +155,7 @@ class TestBase(unittest.TestCase):
             Rectangle.load_from_file_csv(1)
         with self.assertRaises(TypeError):
             Rectangle.load_from_file_csv([r1, r2], 1)
+
 
 class TestRectangle(unittest.TestCase):
     """ unittest for Rectangle class """
@@ -253,7 +262,7 @@ class TestRectangle(unittest.TestCase):
         # test invalid value
         with self.assertRaises(ValueError):
             r1.x = -1
-    
+
     def test_y(self):
         """ tests for y getter and setter """
         # test normal use
@@ -327,10 +336,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 1, 9, 111)
         r1_dictionary = r1.to_dictionary()
         self.assertEqual(type(r1_dictionary), dict)
-        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 111, 'height': 2, 'width': 10})
+        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9,
+                                         'id': 111, 'height': 2, 'width': 10})
         r2 = Rectangle(1, 1)
         r2.update(**r1_dictionary)
         self.assertEqual(r1.__str__(), r2.__str__())
+
 
 class TestSquare(unittest.TestCase):
     """ unittest for Square class """
@@ -454,7 +465,8 @@ class TestSquare(unittest.TestCase):
         s1 = Square(10, 2, 1, 111)
         s1_dictionary = s1.to_dictionary()
         self.assertEqual(type(s1_dictionary), dict)
-        self.assertEqual(s1_dictionary, {'x': 2, 'y': 1, 'id': 111, 'size': 10})
+        self.assertEqual(s1_dictionary, {'x': 2, 'y': 1,
+                                         'id': 111, 'size': 10})
         s2 = Square(1, 1)
         s2.update(**s1_dictionary)
         self.assertEqual(s1.__str__(), s2.__str__())
