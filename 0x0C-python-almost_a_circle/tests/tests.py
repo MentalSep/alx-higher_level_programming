@@ -118,12 +118,9 @@ class TestBase(unittest.TestCase):
         """ tests for save_to_file_csv method """
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 0, 0, 2)
-        errorLine = "[{\"id\": 1, \"width\": 10, \"height\": 7, \"x\": 2, \
-\"y\": 8}, {\"id\": 2, \"width\": 2, \"height\": 4, \"x\": 0, \
-\"y\": 0}]"
         Rectangle.save_to_file_csv([r1, r2])
         with open("Rectangle.csv", "r") as file:
-            self.assertEqual(file.read(), errorLine)
+            self.assertEqual(file.read(), "[{\"id\": 1, \"width\": 10, \"height\": 7, \"x\": 2, \"y\": 8}, {\"id\": 2, \"width\": 2, \"height\": 4, \"x\": 0, \"y\": 0}]")
         Rectangle.save_to_file_csv([])
         with open("Rectangle.csv", "r") as file:
             self.assertEqual(file.read(), "[]")
