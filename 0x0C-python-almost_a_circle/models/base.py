@@ -47,6 +47,8 @@ class Base:
             new = cls(1, 1)
         elif cls.__name__ == "Square":
             new = cls(1)
+        else:
+            return None
         new.update(**dictionary)
         return new
 
