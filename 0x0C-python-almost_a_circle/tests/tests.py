@@ -291,6 +291,8 @@ class TestRectangle(unittest.TestCase):
         # test normal use
         r1 = Rectangle(2, 2)
         self.assertEqual(r1.display(), None)
+        r1 = Rectangle(2, 2, 2, 2)
+        self.assertEqual(r1.display(), None)
         # test no args
         with self.assertRaises(TypeError):
             r1.display(1)
