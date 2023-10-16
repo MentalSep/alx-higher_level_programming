@@ -89,7 +89,7 @@ class Base:
         import turtle
         import random
 
-        colors = ["red","green","blue", "black", "brown", "lightgreen"]
+        colors = ["red", "green", "blue", "black", "brown", "lightgreen"]
         turtle.bgcolor("grey")
         turtle.speed(5)
 
