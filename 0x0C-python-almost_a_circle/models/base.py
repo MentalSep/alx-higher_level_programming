@@ -114,5 +114,4 @@ class Base:
                 turtle.forward(square.height)
                 turtle.left(90)
 
-
         turtle.exitonclick()
