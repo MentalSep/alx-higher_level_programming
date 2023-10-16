@@ -87,15 +87,19 @@ class Base:
     def draw(list_rectangles, list_squares):
         """Draws rectangles and squares"""
         import turtle
+        import random
 
+        colors = ["red","green","blue", "black", "brown", "lightgreen"]
         turtle.bgcolor("grey")
         turtle.speed(5)
 
         for rect in list_rectangles:
-            turtle.color("red")
+            turtle.color(colors[random.randint(0, 5)])
+            turtle.fillcolor(colors[random.randint(0, 5)])
             turtle.pu()
             turtle.setpos(rect.x, rect.y)
             turtle.pd()
+            turtle.begin_fill()
             for i in range(2):
                 turtle.forward(rect.width)
                 turtle.left(90)
@@ -104,14 +108,17 @@ class Base:
             turtle.end_fill()
 
         for square in list_squares:
-            turtle.color("black")
+            turtle.color(colors[random.randint(0, 5)])
+            turtle.fillcolor(colors[random.randint(0, 5)])
             turtle.pu()
             turtle.setpos(square.x, square.y)
             turtle.pd()
+            turtle.begin_fill()
             for i in range(2):
                 turtle.forward(square.width)
                 turtle.left(90)
                 turtle.forward(square.height)
                 turtle.left(90)
+            turtle.end_fill()
 
         turtle.exitonclick()
