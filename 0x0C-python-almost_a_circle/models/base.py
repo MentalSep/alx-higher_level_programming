@@ -88,7 +88,6 @@ class Base:
         """Draws rectangles and squares"""
         import turtle
 
-        turtle.title("My board")
         turtle.bgcolor("black")
         turtle.speed(5)
 
