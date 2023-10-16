@@ -88,29 +88,31 @@ class Base:
         """Draws rectangles and squares"""
         import turtle
 
-        turtle.bgcolor("black")
+        turtle.bgcolor("grey")
         turtle.speed(5)
 
         for rect in list_rectangles:
-            turtle.color("white")
-            turtle.penup()
-            turtle.goto(rect.x, rect.y)
-            turtle.pendown()
+            turtle.color("red")
+            turtle.pu()
+            turtle.setpos(rect.x, rect.y)
+            turtle.pd()
             for i in range(2):
                 turtle.forward(rect.width)
                 turtle.left(90)
                 turtle.forward(rect.height)
                 turtle.left(90)
+            turtle.end_fill()
 
         for square in list_squares:
-            turtle.color("white")
-            turtle.penup()
-            turtle.goto(square.x, square.y)
-            turtle.pendown()
+            turtle.color("black")
+            turtle.pu()
+            turtle.setpos(square.x, square.y)
+            turtle.pd()
             for i in range(2):
                 turtle.forward(square.width)
                 turtle.left(90)
                 turtle.forward(square.height)
                 turtle.left(90)
+
 
         turtle.exitonclick()
