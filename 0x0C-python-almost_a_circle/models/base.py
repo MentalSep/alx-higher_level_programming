@@ -87,7 +87,6 @@ class Base:
     def draw(list_rectangles, list_squares):
         """Draws rectangles and squares"""
         import turtle
-        import random
 
         turtle.title("My board")
         turtle.bgcolor("black")
