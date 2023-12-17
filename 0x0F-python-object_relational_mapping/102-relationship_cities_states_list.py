@@ -11,9 +11,7 @@ if __name__ == "__main__":
         "mysql+mysqldb://{}:{}@localhost/{}".format(
             sys.argv[1], sys.argv[2], sys.argv[3]))
     session = Session(engine)
-    result = session.query(State)
-    for state in result:
-        print('{}: {}'.format(state.id, state.name))
-        for city in state.cities:
-            print('\t{}: {}'.format(city.id, city.name))
+    for city, state in session.query(City, State).filter(
+            City.state_id == State.id).order_by(City.id).all():
+        print("{}: {} -> {}".format(city.id, city.name, state.name))
     session.close()
