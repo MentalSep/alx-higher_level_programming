@@ -10,6 +10,6 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]))
     session = Session(engine)
-    result = session.query(State).filter(State.name == (sys.argv[4],))
-    print(result[0].id if result else "Not found")
+    result = session.query(State).filter(State.name == sys.argv[4]).first()
+    print(result.id if result else "Not found")
     Session.close()
