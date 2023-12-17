@@ -12,6 +12,6 @@ if __name__ == "__main__":
                    INNER JOIN states ON states.id=cities.state_id \
                    WHERE states.name = %s ORDER BY cities.id", (sys.argv[4],))
     results = cursor.fetchall()
-    mylist = list(results[0] for line in results)
+    mylist = list(line[0] for line in results)
     print(*mylist, sep=", ")
     db.close()
