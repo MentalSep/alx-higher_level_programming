@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """sends a request to the passed URL and displays the body of the response"""
 import urllib.request
-import urllib.parse
 import sys
 
 
