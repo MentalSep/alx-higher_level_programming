@@ -8,12 +8,18 @@ request(url, function (err, response, body) {
     console.log(err);
   } else {
     const characters = JSON.parse(body).characters;
-    for (let i = 0; i < characters.length; i++) {
-      request(characters[i], function (err, response, body) {
-        if (!err) {
-          console.log(JSON.parse(body).name);
-        }
-      });
-    }
+    printNames(characters, 0);
   }
 });
+
+function printNames (characters, index) {
+  if (index >= characters.length) {
+    return;
+  }
+  request(characters[index], function (err, response, body) {
+    if (!err) {
+      console.log(JSON.parse(body).name);
+      printNames(characters, index + 1);
+    }
+  });
+}
