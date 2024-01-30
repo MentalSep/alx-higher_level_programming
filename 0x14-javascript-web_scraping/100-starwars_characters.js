@@ -8,14 +8,14 @@ request(url, function (err, response, body) {
     console.log(err);
   } else {
     const characters = JSON.parse(body).characters;
-    for (const character of characters) {
-      request(character, function (err, response, body) {
+    characters.forEach(characterUrl => {
+      request(characterUrl, function (err, response, body) {
         if (err) {
           console.log(err);
         } else {
           console.log(JSON.parse(body).name);
         }
       });
-    }
+    });
   }
 });
